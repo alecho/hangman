@@ -1,0 +1,9 @@
+<dl>
+  <dt>Turns:</dt><dd><%= @tally.turns_left %></dd>
+  <dt>Letters:</dt><dd><%= @tally.letters |> Enum.join(" ") %></dd>
+</dl>
+
+<%= form_for(@conn, hangman_path(@conn, :make_move), [ as: :make_move, method: :put ], fn f -> %>
+  <%= text_input(f, :guess) %>
+  <%= submit("Submit Guess") %>
+<% end) %>
